@@ -1,0 +1,11 @@
+{
+    "name": "vl/app",
+    "autoload": {
+        "psr-4": {
+            "Vl\\App\\": "src/"
+        }
+    },
+    "require": {
+        "fakerphp/faker": "^1.20"
+    }
+}
