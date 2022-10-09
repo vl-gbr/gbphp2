@@ -2,11 +2,12 @@
 namespace Vl\App\Person;
 
 use DateTimeImmutable;
+use Vl\App\Person_Name;
 
 class Person
 {
     public function __construct(
-        private Name $name,
+        private Person_Name $name,
         private DateTimeImmutable $registeredOn
     ) {
     }

@@ -19,8 +19,8 @@ if "%*" == "off" (
 @REM if "%ALIASES%" == "" (
 if "%*" == "" if not defined ALIASES (
     doskey ..=cd ..  
-    doskey host=cd C:\Users\ivanl\Documents\vl 
-    doskey pd=cd C:\Users\ivanl\Documents\vl\php\php-8.1 
+    doskey host=cd C:\op\domains 
+    doskey pd=cd C:\php 
     doskey wd=cd %CD% 
     @REM doskey com=@php "C:\Users\ivanl\Documents\vl\php\php-8.1\composer.phar" '%*'
     doskey com=composer $*

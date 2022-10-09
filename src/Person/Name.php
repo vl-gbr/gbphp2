@@ -1,6 +1,6 @@
 <?php
-namespace Vl\App\Person;
-class Name
+namespace Vl\App;
+class Person_Name
 {
     public function __construct(
         private string $firstName,

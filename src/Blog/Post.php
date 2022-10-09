@@ -1,9 +1,9 @@
 <?php
-namespace Vl\App\Blog;
+namespace Vl\App;
 
 use Vl\App\Person\Person;
 
-class Post
+class Blog_Post
 {
     public function __construct(
         private Person $author,
