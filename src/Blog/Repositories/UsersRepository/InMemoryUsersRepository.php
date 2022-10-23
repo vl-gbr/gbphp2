@@ -2,9 +2,10 @@
 namespace Vl\App\Blog\Repositories\UsersRepository;
 
 use Vl\App\Blog\User;
+use Vl\App\Blog\UUID;
 use Vl\App\Blog\Exceptions\UserNotFoundException;
 
-class InMemoryUsersRepository
+class InMemoryUsersRepository implements UsersRepositoryInterface
 {
     /**
      * @var User[]
@@ -22,13 +23,25 @@ class InMemoryUsersRepository
      * @return User
      * @throws UserNotFoundException
      */
-    public function get(int $id): User
+    public function get(UUID $uuid): User
     {
         foreach ($this->users as $user) {
-            if ($user->id() === $id) {
+            if ( (string) $user->uuid() === (string) $uuid) {
                 return $user;
             }
         }
-        throw new UserNotFoundException("User not found: $id");
+        throw new UserNotFoundException("User not found: $uuid");
     }
+
+    // Метод получения пользователя по username
+    public function getByUsername(string $username): User
+    {
+        foreach ($this->users as $user) {
+            if ($user->username() === $username) {
+                return $user;
+            }
+        }
+        throw new UserNotFoundException("User not found: $username");
+    }
+
 }

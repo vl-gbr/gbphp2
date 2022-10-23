@@ -7,6 +7,12 @@ class Name
         private string $lastName
     ) {
     }
+    public function firstName() {
+        return $this->firstName;
+    }
+    public function lastName() {
+        return $this->lastName;
+    }
     public function __toString()
     {
         return $this->firstName . ' ' . $this->lastName;
