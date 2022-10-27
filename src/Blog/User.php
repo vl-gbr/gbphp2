@@ -9,8 +9,8 @@ class User
 
     public function __construct(
         private UUID $uuid,
-        private Name $name,
         private string $userName,
+        private Name $name,
         private string|null $email = null,
         private DateTimeImmutable|null $registeredOn = new DateTimeImmutable()
     ) {

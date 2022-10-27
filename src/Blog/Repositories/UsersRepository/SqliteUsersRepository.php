@@ -19,20 +19,19 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 	public function save(User $user): void
 	{
 		// Подготавливаем запрос
-		$statement = $this->connection->prepare(
-			'INSERT INTO users (first_name, last_name, uuid, username)
-			VALUES (:first_name, :last_name, :uuid, :username)'
-		);
+		$statement = $this->connection->prepare('
+			INSERT INTO users (first_name, last_name, uuid, username)
+			VALUES (:first_name, :last_name, :uuid, :username)
+		');
 		// Выполняем запрос с конкретными значениями
 		$statement->execute([
 			// Это работает, потому что класс UUID
 			// имеет магический метод __toString(),
 			// который вызывается, когда объект
 			// приводится к строке с помощью (string)
-			':uuid' => (string) $user->uuid(),
-			':username' => $user->userName(),
 			':first_name' => $user->name()->firstName(),
 			':last_name' => $user->name()->lastName(),
+			':uuid' => (string) $user->uuid(),
 			':username' => $user->username(),
 		]);
 	}
@@ -41,9 +40,9 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 	// пользователя по его UUID
 	public function get(UUID $uuid): User
 	{
-		$statement = $this->connection->prepare(
-			'SELECT * FROM users WHERE uuid = ?'
-		);
+		$statement = $this->connection->prepare('
+			SELECT * FROM users WHERE uuid = ?
+		');
 		$statement->execute([
 			':uuid' => (string) $uuid,
 		]);
@@ -54,9 +53,9 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 	// Метод получения пользователя по username
 	public function getByUsername(string $username): User
 	{
-		$statement = $this->connection->prepare(
-			'SELECT * FROM users WHERE username = :username'
-		);
+		$statement = $this->connection->prepare('
+			SELECT * FROM users WHERE username = :username
+		');
 		$statement->execute([
 			':username' => $username,
 		]);
