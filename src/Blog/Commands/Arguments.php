@@ -2,7 +2,7 @@
 
 namespace Vl\App\Blog\Commands;
 
-use Vl\App\Blog\Commands\ArgumentsException;
+use Vl\App\Blog\Exceptions\ArgumentsException;
 
 final class Arguments
 {

@@ -11,6 +11,7 @@ class InMemoryUsersRepository implements UsersRepositoryInterface
      * @var User[]
      */
     private array $users = [];
+
     /**
      * @param User $user
      */
@@ -18,6 +19,7 @@ class InMemoryUsersRepository implements UsersRepositoryInterface
     {
         $this->users[] = $user;
     }
+
     /**
      * @param int $id
      * @return User
@@ -33,7 +35,14 @@ class InMemoryUsersRepository implements UsersRepositoryInterface
         throw new UserNotFoundException("User not found: $uuid");
     }
 
-    // Метод получения пользователя по username
+    /**
+     * getByUsername
+     *  -   Метод получения пользователя по username
+     *
+     * @param  string $username
+     * @return User
+     * @throws UserNotFoundException
+     */
     public function getByUsername(string $username): User
     {
         foreach ($this->users as $user) {
@@ -43,5 +52,4 @@ class InMemoryUsersRepository implements UsersRepositoryInterface
         }
         throw new UserNotFoundException("User not found: $username");
     }
-
 }
