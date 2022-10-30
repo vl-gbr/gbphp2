@@ -20,7 +20,13 @@ final class Arguments
 			$this->arguments[(string)$argument] = $stringValue;
 		}
 	}
-	// Переносим сюда логику разбора аргументов командной строки
+	// Переносим сюда логику разбора аргументов командной строки	
+	/**
+	 * fromArgv
+	 *
+	 * @param  mixed $argv
+	 * @return self
+	 */
 	public static function fromArgv(array $argv): self
 	{
 		$arguments = [];
@@ -32,7 +38,13 @@ final class Arguments
 			$arguments[$parts[0]] = $parts[1];
 		}
 		return new self($arguments);
-	}
+	}	
+	/**
+	 * get
+	 *
+	 * @param  mixed $argument
+	 * @return string
+	 */
 	public function get(string $argument): string
 	{
 		if (!array_key_exists($argument, $this->arguments)) {
