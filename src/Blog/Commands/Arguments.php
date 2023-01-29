@@ -4,9 +4,11 @@ namespace Vl\App\Blog\Commands;
 
 use Vl\App\Blog\Exceptions\ArgumentsException;
 
+/** @package Vl\App\Blog\Commands */
 final class Arguments
 {
 	private array $arguments = [];
+
 	public function __construct(iterable $arguments)
 	{
 		foreach ($arguments as $argument => $value) {
@@ -20,6 +22,7 @@ final class Arguments
 			$this->arguments[(string)$argument] = $stringValue;
 		}
 	}
+
 	// Переносим сюда логику разбора аргументов командной строки	
 	/**
 	 * fromArgv

@@ -23,6 +23,9 @@ try {
 	// Запускаем команду
 	// cli.bat username='vl' first_name='Vit' last_name='Lenkn'
 	$command->handle(Arguments::fromArgv($argv));
+	
+	//echo $usersRepository->getByUsername('vl');
+
 }
 catch (AppException $e) {
 	// Выводим сообщения об ошибках

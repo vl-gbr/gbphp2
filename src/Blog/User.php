@@ -16,10 +16,11 @@ class User
     ) {
     }
 
-    public function id(): int
-    {
-        return $this->id;
-    }
+    // DEPRECATED
+    //public function id(): int
+    //{
+    //    return $this->id;
+    //}
 
     public function name()
     {
@@ -39,6 +40,6 @@ class User
 
     public function __toString()
     {
-        return 'User(' . $this->id . '): ' . $this->name . ', registered  ' . $this->registeredOn->format('Y-m-d') . '.';
+        return "User($this->uuid): " . $this->name . ', registered  ' . $this->registeredOn->format('Y-m-d') . '.';
     }
 }

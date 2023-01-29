@@ -21,7 +21,7 @@ class InMemoryUsersRepository implements UsersRepositoryInterface
     }
 
     /**
-     * @param int $id
+     * @param UUID $uuid
      * @return User
      * @throws UserNotFoundException
      */

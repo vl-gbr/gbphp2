@@ -40,7 +40,10 @@ final class CreateUserCommand
 			new User(
 				UUID::random(),
 				$username,
-				new Name($arguments->get('first_name'), $arguments->get('last_name')),
+				new Name(
+					$arguments->get('first_name'), 
+					$arguments->get('last_name')
+				),
 			)
 		);
 	}

@@ -3,6 +3,7 @@
 namespace Vl\App\Blog\Repositories\UsersRepository;
 
 use PDO;
+use PDOException;
 use PDOStatement;
 use Vl\App\Blog\Name;
 use Vl\App\Blog\User;
@@ -16,6 +17,11 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 	) {
 	}
 
+	/**
+	 * @param User $user 
+	 * @return void 
+	 * @throws PDOException 
+	 */
 	public function save(User $user): void
 	{
 		// Подготавливаем запрос
@@ -38,6 +44,12 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 
 	// Также добавим метод для получения
 	// пользователя по его UUID
+	/**
+	 * @param UUID $uuid 
+	 * @return User 
+	 * @throws PDOException 
+	 * @throws UserNotFoundException 
+	 */
 	public function get(UUID $uuid): User
 	{
 		$statement = $this->connection->prepare('
@@ -51,6 +63,12 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 	}
 
 	// Метод получения пользователя по username
+	/**
+	 * @param string $username 
+	 * @return User 
+	 * @throws PDOException 
+	 * @throws UserNotFoundException 
+	 */
 	public function getByUsername(string $username): User
 	{
 		$statement = $this->connection->prepare('
@@ -62,6 +80,12 @@ class SqliteUsersRepository implements UsersRepositoryInterface
 		return $this->getUser($statement, $username);
 	}
 
+	/**
+	 * @param PDOStatement $statement 
+	 * @param string $username 
+	 * @return User 
+	 * @throws UserNotFoundException 
+	 */
 	public function getUser( PDOStatement $statement, string $username ) :User {
 
 		$result = $statement->fetch(PDO::FETCH_ASSOC);
